@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>uithemes</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <licenses>
@@ -21,7 +21,7 @@
         <connection>scm:git:ssh://github.com/jenkinsci/uithemes-plugin</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/uithemes-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/uithemes-plugin</url>
-      <tag>uithemes-1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
