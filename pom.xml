@@ -18,6 +18,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:ssh://github.com/jenkinsci/uithemes-plugin</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/uithemes-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/uithemes-plugin</url>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.lesscss</groupId>
