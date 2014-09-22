@@ -1,0 +1,10 @@
+@import "/core/variables.less"; // Should result in fallback-core-variables being imported
+
+#header {
+  color: @page-header-bg-color;
+}
+
+/* broken .less file should result in this plugin being skipped */
+#plugin2 {
+  color: @unknown-variable;
+}
