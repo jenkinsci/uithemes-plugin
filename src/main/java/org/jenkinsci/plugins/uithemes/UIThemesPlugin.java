@@ -67,7 +67,7 @@ public class UIThemesPlugin extends Plugin {
     public UIThemesPlugin() {
         super();
         // TODO: Get the theme variables from the UI i.e. allow the user to configure themes
-        themeVariables.setProperty("theme-icons", "classic");
+        themeVariables.setProperty("theme-icons", System.getProperty("theme-icons", "classic"));
     }
 
     @Override
