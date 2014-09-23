@@ -58,7 +58,7 @@ public class URLResourceTest {
         URLResource classpathResource = new URLResource(stringClassResURL);
         URLResource integerClassRes = classpathResource.createRelative("Integer.class");
 
-        Assert.assertEquals("jar:file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar!/java/lang/Integer.class", integerClassRes.getResConfigURI().toString());
+        Assert.assertTrue(integerClassRes.getResConfigURI().toString().endsWith("/java/lang/Integer.class"));
         Assert.assertTrue(integerClassRes.exists());
     }
 
