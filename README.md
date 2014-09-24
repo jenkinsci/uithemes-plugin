@@ -61,8 +61,8 @@ branch. The following screenshot shows that theme enabled on the [JENKINS-24143]
 
 Note that this is still a WIP.  Among other things, the icon positioning looks a bit off.  To run this locally:
 
-1. Checkout and build the [JENKINS-24143](https://github.com/tfennelly/jenkins/tree/JENKINS-24143) branch of Jenkins Core project.
-1. Checkout and build the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome) branch of the Icon Shim Plugin project.
+1. Checkout and build (`mvn clean install`) the [JENKINS-24143](https://github.com/tfennelly/jenkins/tree/JENKINS-24143) branch of Jenkins Core project.
+1. Checkout and build (`mvn clean install`) the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome) branch of the Icon Shim Plugin project.
 1. Change to the `plugin` directory of the Icon Shim Plugin project.
 1. Execute `mvn hpi:run -Dtheme-icons=font-awesome`.
 1. Got to http://localhost:8080/jenkins/ in your browser.
