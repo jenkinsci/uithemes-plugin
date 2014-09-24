@@ -55,7 +55,18 @@ LESS definition files, depending on the theme variable configurations.
 The [icon-shim-plugin](https://github.com/jenkinsci/icon-shim-plugin) is an example of a plugin that uses the UI Themes Plugin.
 Its main/master branch defines an icon theme for the "classic" Jenkins icons.  We also experimented with adding an icon
 theme that uses the [Font Awesome icon set](http://fortawesome.github.io/).  That's a work in progress on the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome)
-branch. The following screenshot shows that theme enabled on the [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins core by simply adding a System
-property of `-Dtheme-icons=font-awesome` to Jenkins startup.
+branch. The following screenshot shows that theme enabled on the [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins Core.
 
 ![font-awesome-sample](https://raw.githubusercontent.com/jenkinsci/icon-shim-plugin/font-awesome/plugin/src/main/webapp/less/icons/font-awesome/font-awesome-sample.png)
+
+Note that this is still a WIP.  Among other things, the icon positioning looks a bit off.  To run this locally:
+
+1. Checkout and build the [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins Core project.
+1. Checkout and build the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome) branch of the Icon Shim Plugin project.
+1. Change to the `plugin` directory of the Icon Shim Plugin project.
+1. Execute `mvn hpi:run -Dtheme-icons=font-awesome`.
+1. Got to http://localhost:8080/jenkins/ in your browser.
+
+You'll notice that icons contributed by plugins are still the `classic` icons.  Plugins can contribute theme based icons in the same way as
+the Icon Shim Plugin contributes the Jenkins Core set of icons i.e. by defining the appropriate LESS definition files and including
+them using a `@import "./icons/#icons.less";` import (see above).
