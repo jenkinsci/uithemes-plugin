@@ -3,7 +3,7 @@
 This Plugin allows Jenkins Core and other Plugins (that depend on it) to define modularised CSS via
 [LESS](http://lesscss.org/) definition files.
 
-The [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins Core is currently enabled to use this plugin.
+The [JENKINS-24143](https://github.com/tfennelly/jenkins/tree/JENKINS-24143) branch of Jenkins Core is currently enabled to use this plugin.
 
 ## How it works
 The plugin tries to create 2 in-memory stylesheets that it then serves on well know URLs:
@@ -55,13 +55,13 @@ LESS definition files, depending on the theme variable configurations.
 The [icon-shim-plugin](https://github.com/jenkinsci/icon-shim-plugin) is an example of a plugin that uses the UI Themes Plugin.
 Its main/master branch defines an icon theme for the "classic" Jenkins icons.  We also experimented with adding an icon
 theme that uses the [Font Awesome icon set](http://fortawesome.github.io/).  That's a work in progress on the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome)
-branch. The following screenshot shows that theme enabled on the [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins Core.
+branch. The following screenshot shows that theme enabled on the [JENKINS-24143](https://github.com/tfennelly/jenkins/tree/JENKINS-24143) branch of Jenkins Core.
 
 ![font-awesome-sample](https://raw.githubusercontent.com/jenkinsci/icon-shim-plugin/font-awesome/plugin/src/main/webapp/less/icons/font-awesome/font-awesome-sample.png)
 
 Note that this is still a WIP.  Among other things, the icon positioning looks a bit off.  To run this locally:
 
-1. Checkout and build the [JENKINS-24143](https://github.com/tfennelly/jenkins/compare/JENKINS-24143) branch of Jenkins Core project.
+1. Checkout and build the [JENKINS-24143](https://github.com/tfennelly/jenkins/tree/JENKINS-24143) branch of Jenkins Core project.
 1. Checkout and build the [font-awesome](https://github.com/jenkinsci/icon-shim-plugin/tree/font-awesome) branch of the Icon Shim Plugin project.
 1. Change to the `plugin` directory of the Icon Shim Plugin project.
 1. Execute `mvn hpi:run -Dtheme-icons=font-awesome`.
