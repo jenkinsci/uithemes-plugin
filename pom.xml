@@ -1,14 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.520</version>
+        <version>1.595</version> <!-- Need 1.566+ for User IdStrategy etc -->
     </parent>
 
-    <artifactId>uithemes</artifactId>
+    <groupId>org.jenkins-ci.plugins.uithemes</groupId>
+    <artifactId>uithemes-pom</artifactId>
     <version>1.2-SNAPSHOT</version>
-    <packaging>hpi</packaging>
+    <packaging>pom</packaging>
+    <name>UIThemes: Parent POM</name>
+
+    <properties>
+        <version.hpi>1.109</version.hpi>
+    </properties>
+
+    <modules>
+        <module>processor</module>
+        <module>plugin</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>    
 
     <licenses>
         <license>
@@ -21,8 +42,8 @@
         <connection>scm:git:ssh://github.com/jenkinsci/uithemes-plugin</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/uithemes-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/uithemes-plugin</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <developers>
         <developer>
@@ -31,26 +52,18 @@
         </developer>
     </developers>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>org.lesscss</groupId>
-            <artifactId>lesscss</artifactId>
-            <version>1.7.0.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

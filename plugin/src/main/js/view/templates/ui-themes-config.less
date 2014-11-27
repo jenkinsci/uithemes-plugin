@@ -1,0 +1,96 @@
+.ui-themes-config {
+  .pane-frame {
+    position: relative;
+    padding: 10px;
+
+    .theme-desc {
+      margin-top: -10px;
+      margin-left: -10px;
+      margin-right: -10px;
+      padding: 10px;
+      background: #eee;
+      margin-bottom: 10px;
+    }
+
+    .applied {
+      position: absolute;
+      top: 5px;
+      padding: 5px;
+      right: 10px;
+      background-color: darken(#eee, 30%);
+      font-weight: bold;
+      color: darken(#fff, 5%);
+      z-index: 1;
+      .light-border;
+      .rounded-corners;
+    }
+
+    table {
+      width: 100%;
+
+      .title {
+        font-weight: bold;
+      }
+      .description {
+        opacity: 0.5;
+      }
+
+      .impl-names {
+        width: 200px;
+
+        .impl-name {
+          margin-top: 10px;
+          position: relative;
+
+          input.selection {
+            position: absolute;
+          }
+          .title, .description {
+            padding-left: 25px;
+            padding-top: 2px;
+          }
+        }
+        .impl-name:first-child {
+          margin-top: 0px;
+        }
+      }
+
+      .impl-config {
+        padding-left: 10px;
+
+        .impl-config-property {
+          .name {
+             width: 200px;
+          }
+
+          td {
+            padding-bottom: 15px;
+            vertical-align: middle;
+          }
+        }
+
+        .reset {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-weight: normal;
+          opacity: 0.6;
+          .clickable;
+        }
+        .reset:hover {
+          opacity: 1.0;
+        }
+      }
+    }
+
+    .apply-btn {
+      position: absolute;
+      right: 20px;
+      top: 4px;
+
+      button {
+        padding: 0px 10px !important;
+      }
+    }
+  }
+}

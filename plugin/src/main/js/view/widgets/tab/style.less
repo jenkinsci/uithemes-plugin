@@ -1,0 +1,48 @@
+.tab-bar {
+  clear: both;
+  overflow: auto;
+  position: relative;
+  top: 1px;
+
+  .tab:first-child {
+    margin-left: 15px;
+  }
+
+  .tab {
+    float: left;
+    margin-left: 3px;
+    cursor: pointer;
+
+    border: solid 1px #f0f0f0;
+    border-bottom: none;
+    text-decoration: none;
+    color: #999;
+    padding: 7px 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 13px !important;
+
+  }
+
+  .tab:hover {
+    background: #eee;
+  }
+
+  .tab.active {
+    border: solid 1px #f0f0f0;
+    background: #eee;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    z-index: 2;
+  }
+}
+
+.tab-content-frame {
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+}

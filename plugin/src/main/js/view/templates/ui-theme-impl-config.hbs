@@ -1,0 +1,28 @@
+{{#if this.isConfigurable}}
+    <span class="reset" title="Reset theme implementation styles back to their default values">reset</span>
+    {{#if this.selection.usageDetails}}<div class="alert alert-info">{{{this.selection.usageDetails}}}</div>{{/if}}
+    <table>
+        {{#each this.userConfig}}
+        <tr class="impl-config-property">
+            <td class="name">
+                <div class="title">{{this.title}}</div>
+                {{#if this.description}}<div class="description">{{this.description}}</div>{{/if}}
+            </td>
+            <td class="value">
+                {{#if this.permittedValues}}
+                    <select class="form-control impl-config-value {{this.type}}" name="{{this.name}}" defaultValue="{{this.defaultValue}}">
+                        {{#each this.permittedValues}}
+                        <option value="{{this}}" {{#ifCond this '===' ../value}}selected="true"{{/ifCond}}>{{this}}</option>
+                        {{/each}}
+                    </select>
+                {{else}}
+                    <input type="text" class="form-control impl-config-value {{this.type}}" name="{{this.name}}" value="{{this.value}}" defaultValue="{{this.defaultValue}}" />
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    <span class="yui-button yui-push-button primary save"><button type="button">Apply</button></span>
+{{else}}
+    <span class="text-muted">This theme implementation is not configurable.</span>
+{{/if}}

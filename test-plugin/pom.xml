@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins.uithemes</groupId>
+        <artifactId>uithemes-pom</artifactId>
+        <version>1.2-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>uithemes-test</artifactId>
+    <packaging>hpi</packaging>
+    <name>UIThemes: Test Plugin</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>uithemes</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jenkins-ci.tools</groupId>
+                <artifactId>maven-hpi-plugin</artifactId>
+                <version>${version.hpi}</version>
+                <configuration>
+                    <loggers>
+                        <org.jenkinsci.plugins.uithemes>FINE</org.jenkinsci.plugins.uithemes>
+                    </loggers>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>
+                        // The following scriptlet is used to install HPL files in work/plugins dir, allowing
+                        // the maven HPI plugin in this project to scan for changes in sibling jenkins plugin
+                        // projects.
+
+                        def plugins = new File(basedir, 'work/plugins');
+                        def addPluginHPL = {pluginDir ->
+                            def theHpl = new File(new File(basedir.parentFile, pluginDir), 'target/test-classes/the.hpl');
+
+                            if (theHpl.file) {
+                                ant.copy(file: theHpl, tofile: new File(plugins, pluginDir + '.hpl'), overwrite: true, verbose: true);
+                            } else {
+                                throw new IllegalStateException('HPL file ' + theHpl + ' does not exist. Cannot add to plugins.');
+                            }
+                        }
+
+                        plugins.mkdirs();
+
+                        // Add the HPL file for each of the plugins that we want to auto-scan for changes.
+                        addPluginHPL('plugin');
+                    </source>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

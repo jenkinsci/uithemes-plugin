@@ -7,3 +7,7 @@ work
 *.ipr
 .idea
 out
+
+node
+node_modules
+npm-debug.log

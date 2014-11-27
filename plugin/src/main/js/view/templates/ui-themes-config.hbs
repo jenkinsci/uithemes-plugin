@@ -1,0 +1,31 @@
+<h2>UI Themes Configuration</h2>
+
+<div class="tab-bar">
+    {{#each this.themes}}
+    <div class="tab active" tab-id="tab-{{@index}}">{{this.title}}</div>
+    {{/each}}
+</div>
+<div class="tab-content-frame pane-frame">
+    {{#each this.themes}}
+    <div class="tab-content" tab-id="tab-{{@index}}">
+        <div class="theme-desc">{{this.description}}</div>
+        <div class="applied">Applied</div>
+        <table>
+            <tr>
+                <td class="impl-names">
+                    {{#each this.implementations}}
+                    <div class="impl-name">
+                        <input class="selection" type="radio" name="{{../name}}" value="{{this.name}}" {{#if this.isSelection}}checked="true"{{/if}}/>
+                        <div class="title">{{{this.title}}}</div>
+                        <div class="description">{{{this.description}}}</div>
+                    </div>
+                    {{/each}}
+                </td>
+                <td  class="impl-config">
+                    <div uit-controller="ui-theme-impl-config" theme="{{this.name}}" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    {{/each}}
+</div>

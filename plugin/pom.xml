@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins.uithemes</groupId>
+        <artifactId>uithemes-pom</artifactId>
+        <version>1.2-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>uithemes</artifactId>
+    <packaging>hpi</packaging>
+    <name>UIThemes: Plugin</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>uithemes-processor</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.icon-shim</groupId>
+            <artifactId>icon-set</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>target/generated-adjuncts</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.jenkins-ci.tools</groupId>
+                <artifactId>maven-hpi-plugin</artifactId>
+                <version>${version.hpi}</version>
+                <configuration>
+                    <loggers>
+                        <org.jenkinsci.plugins.uithemes>FINE</org.jenkinsci.plugins.uithemes>
+                    </loggers>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>0.0.16</version>
+
+                <executions>
+
+                    <execution>
+                        <phase>initialize</phase>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v0.10.35</nodeVersion>
+                            <npmVersion>2.1.17</npmVersion>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <phase>initialize</phase>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Note that this may not be omitted lest maven-release-plugin be confused (frontend-maven-plugin #109): -->
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <id>gulp build</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>build</arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <phase>test</phase>
+                        <id>gulp test</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>test</arguments>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
