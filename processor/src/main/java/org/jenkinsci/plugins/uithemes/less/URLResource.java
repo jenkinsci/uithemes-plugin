@@ -24,6 +24,7 @@
 package org.jenkinsci.plugins.uithemes.less;
 
 import org.jenkinsci.plugins.uithemes.UIThemesProcessor;
+import org.jenkinsci.plugins.uithemes.model.UIThemeContribution;
 import org.lesscss.FileResource;
 import org.lesscss.Resource;
 
@@ -46,16 +47,17 @@ public class URLResource implements Resource {
 
     public static final String CORE_LESS_PREFIX = "/jenkins-themes/";
     public static final String JENKINS_ENV_ALIAS = CORE_LESS_PREFIX + "env.less";
-    public static final String VARIABLES_ALIAS = CORE_LESS_PREFIX + "core/variables.less";
 
     private URI resConfigURI;
     private URL baseURL;
     private URL resClasspathURL;
+    private UIThemeContribution viaContribution;
     private URLResource coreVariables;
     private UIThemesProcessor themesProcessor;
 
-    public URLResource(URL resClasspathURL) {
+    public URLResource(URL resClasspathURL, UIThemeContribution viaContribution) {
         this.resClasspathURL = resClasspathURL;
+        this.viaContribution = viaContribution;
         if (resClasspathURL != null) {
             try {
                 this.resConfigURI = resClasspathURL.toURI();
@@ -67,9 +69,10 @@ public class URLResource implements Resource {
         }
     }
 
-    public URLResource(String resPath) {
+    public URLResource(String resPath, UIThemeContribution viaContribution) {
         try {
             this.resConfigURI = new URI(resPath);
+            this.viaContribution = viaContribution;
             if (this.resConfigURI.isAbsolute()) {
                 this.resClasspathURL = getRelativeResourceURL(resPath);
                 if (resClasspathURL == null) {
@@ -161,11 +164,11 @@ public class URLResource implements Resource {
             if (astrixIdx != -1) {
                 String jar = urlAsString.substring(0, astrixIdx);
                 String resInJar = urlAsString.substring(astrixIdx + 1);
-                return new URLResource(new URL(jar + "!" + URI.create(resInJar).resolve(relativeResourcePath)))
+                return new URLResource(new URL(jar + "!" + URI.create(resInJar).resolve(relativeResourcePath)), viaContribution)
                         .setThemesProcessor(themesProcessor)
                         .setCoreVariables(coreVariables);
             } else {
-                return new URLResource(resConfigURI.resolve(relativeResourcePath).toString())
+                return new URLResource(resConfigURI.resolve(relativeResourcePath).toString(), viaContribution)
                         .setBaseURL(baseURL)
                         .setThemesProcessor(themesProcessor)
                         .setCoreVariables(coreVariables);
@@ -191,11 +194,11 @@ public class URLResource implements Resource {
     }
 
     private URLResource getClasspathLESSResource(String resourcePath) {
-        URL resUrl = getClass().getResource(resourcePath);
+        URL resUrl = viaContribution.getContributor().getResource(resourcePath);
         if (resUrl == null) {
             return null;
         }
-        return new URLResource(resUrl);
+        return new URLResource(resUrl, viaContribution);
     }
 
     @Override

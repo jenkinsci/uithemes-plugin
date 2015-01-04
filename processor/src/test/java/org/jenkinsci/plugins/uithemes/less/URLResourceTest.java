@@ -36,16 +36,16 @@ public class URLResourceTest {
 
     @Test
     public void test_exists() {
-        URLResource classpathResource = new URLResource("/less/file1.less");
+        URLResource classpathResource = new URLResource("/less/file1.less", NullContribution.instance);
         Assert.assertTrue(classpathResource.exists());
 
-        classpathResource = new URLResource("/less/xxx.less");
+        classpathResource = new URLResource("/less/xxx.less", NullContribution.instance);
         Assert.assertFalse(classpathResource.exists());
     }
 
     @Test
     public void test_createRelative() throws IOException {
-        URLResource classpathResource = new URLResource("/less/file1.less");
+        URLResource classpathResource = new URLResource("/less/file1.less", NullContribution.instance);
         URLResource file2 = (URLResource) classpathResource.createRelative("sub/file3.less");
 
         Assert.assertEquals("/less/sub/file3.less", file2.getResConfigURI().toString());
@@ -55,7 +55,7 @@ public class URLResourceTest {
     @Test
     public void test_createRelative_jar() throws IOException {
         URL stringClassResURL = URLResourceTest.class.getResource("/java/lang/String.class");
-        URLResource classpathResource = new URLResource(stringClassResURL);
+        URLResource classpathResource = new URLResource(stringClassResURL, NullContribution.instance);
         URLResource integerClassRes = (URLResource) classpathResource.createRelative("Integer.class");
 
         Assert.assertTrue(integerClassRes.getResConfigURI().toString().endsWith("/java/lang/Integer.class"));

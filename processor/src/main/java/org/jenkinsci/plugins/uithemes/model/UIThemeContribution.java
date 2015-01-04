@@ -114,7 +114,7 @@ public class UIThemeContribution {
         try {
             lessTemplate.process(userConfig, writer);
             FileUtils.write(lessFile, writer.toString(), "UTF-8");
-            return new URLResource(lessFile.toURI().toURL());
+            return new URLResource(lessFile.toURI().toURL(), this);
         } catch (TemplateException e) {
             throw new IOException(
                     String.format("Error applying user theme impl configuration to LESS resource template. UserHome '%s', ThemeImpl '%s'.\n" +

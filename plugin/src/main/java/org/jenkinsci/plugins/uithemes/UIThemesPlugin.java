@@ -49,5 +49,9 @@ public class UIThemesPlugin extends Plugin implements UIThemeContributor {
         // Contribute to the classic icon set.
         // See src/main/resources/jenkins-themes/icons/classic/classic-icons-uithemes/theme-template.less
         themeSet.contribute(new UIThemeContribution("classic-icons-uithemes", "icons", "classic", UIThemesPlugin.class));
+
+        // Contribute to the font-awesome icon set.
+        // See src/main/resources/jenkins-themes/icons/font-awesome-icons/font-awesome-uithemes/theme-template.less
+        themeSet.contribute(new UIThemeContribution("font-awesome-uithemes", "icons", "font-awesome-icons", UIThemesPlugin.class));
     }
 }

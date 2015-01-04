@@ -23,45 +23,16 @@
  */
 package org.jenkinsci.plugins.uithemes.less;
 
-import org.jenkinsci.plugins.uithemes.util.JenkinsUtil;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.lesscss.LessException;
-
-import java.io.IOException;
+import org.jenkinsci.plugins.uithemes.model.UIThemeContribution;
 
 /**
  * @author <a href="mailto:tom.fennelly@gmail.com">tom.fennelly@gmail.com</a>
  */
-public class LESSProcessorTest {
+public class NullContribution extends UIThemeContribution {
 
-    @Before
-    public void setup() throws NoSuchMethodException, IOException {
-        JenkinsUtil.JenkinsUtilTestSetup.setup();
+    public static final NullContribution instance = new NullContribution();
+
+    private NullContribution() {
+        super("null-contribution", "null-theme", "null-theme-impl", NullContribution.class);
     }
-
-    @Test
-    public void test_load_from_classpath() throws IOException, LessException {
-        LESSProcessor lessProcessor = new LESSProcessor();
-        URLResource classpathResource = new URLResource("/less/file1.less", NullContribution.instance);
-
-        String processed = lessProcessor.process(classpathResource);
-        Assert.assertEquals(PROCESSED_CSS, processed.trim());
-    }
-
-    private static final String PROCESSED_CSS =
-            "#header {\n" +
-            "  color: #eeeeee;\n" +
-            "  background-image: url('/jenkins/images/aaa.png');\n" +
-            "}\n" +
-            "#banner {\n" +
-            "  color: #6c94be;\n" +
-            "}\n" +
-            "#banner .navigation {\n" +
-            "  font-size: 12px;\n" +
-            "}\n" +
-            "#banner .logo {\n" +
-            "  width: 300px;\n" +
-            "}";
 }
