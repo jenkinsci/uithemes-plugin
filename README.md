@@ -19,6 +19,10 @@ The following is an example screennshot of the user UI Themes Configuration scre
 
 ![config-screen](./images/config-screen.png)
 
+And here's a short screen recording:
+
+<a href="http://youtu.be/ZlD0zf1VCAs" target="_blank"><img src="http://img.youtube.com/vi/ZlD0zf1VCAs/0.jpg" /></a>
+
 [tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2) contains a number of themes, some of which have multiple
 implementations:
 
