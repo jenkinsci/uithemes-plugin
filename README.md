@@ -4,16 +4,8 @@ This repository contains components that, when combined, provide the basis on wh
 per-login customizable/configurable UI "themes".
 
 We've already integrated it into Jenkins Core on a WIP branch at [tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2).
-Simply pull, build and run:
 
-```
-git checkout -b JENKINS-24143-uithemes-v2
-git pull https://github.com/tfennelly/jenkins.git JENKINS-24143-uithemes-v2
-mvn clean install -DskipTests=true
-```
-
-Note, before pulling, you may need to reset the head revision on your branch so as to line up with the revision history of
-[tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2).
+__[Download from the Jenkins CI Server](https://jenkins.ci.cloudbees.com/job/core/job/jenkins-core/1875/artifact/war/target/jenkins.war)__.
 
 The following is an example screennshot of the user UI Themes Configuration screen on [tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2).
 
