@@ -27,7 +27,10 @@ import hudson.Plugin;
 import org.jenkins.ui.icon.Icon;
 import org.jenkins.ui.icon.IconSet;
 import org.jenkins.ui.icon.IconType;
-import org.jenkinsci.plugins.uithemes.model.UIThemeContribution;
+import org.jenkinsci.plugins.uithemes.contributions.ConsoleOutput;
+import org.jenkinsci.plugins.uithemes.contributions.Icons;
+import org.jenkinsci.plugins.uithemes.contributions.PageHeader;
+import org.jenkinsci.plugins.uithemes.contributions.StatusBalls;
 import org.jenkinsci.plugins.uithemes.model.UIThemeSet;
 
 /**
@@ -46,12 +49,9 @@ public class UIThemesPlugin extends Plugin implements UIThemeContributor {
 
     @Override
     public void contribute(UIThemeSet themeSet) {
-        // Contribute to the classic icon set.
-        // See src/main/resources/jenkins-themes/icons/classic/classic-icons-uithemes/theme-template.less
-        themeSet.contribute(new UIThemeContribution("classic-icons-uithemes", "icons", "classic", UIThemesPlugin.class));
-
-        // Contribute to the font-awesome icon set.
-        // See src/main/resources/jenkins-themes/icons/font-awesome-icons/font-awesome-uithemes/theme-template.less
-        themeSet.contribute(new UIThemeContribution("font-awesome-uithemes", "icons", "font-awesome-icons", UIThemesPlugin.class));
+        PageHeader.contribute(themeSet);
+        Icons.contribute(themeSet);
+        StatusBalls.contribute(themeSet);
+        ConsoleOutput.contribute(themeSet);
     }
 }

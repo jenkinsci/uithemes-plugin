@@ -120,7 +120,7 @@ public class UITheme {
 
         if (impl == null) {
             QName implQName = UIThemeImplementation.toQName(contribution.getThemeName(), contribution.getThemeImplName());
-            LOGGER.log(Level.WARNING, "Theme implementation ''{0}'' not registered yet. Registration of contribution ''{1}'' is deferred until theme implementation is registered.",
+            LOGGER.log(Level.INFO, "Theme implementation ''{0}'' not registered yet. Registration of contribution ''{1}'' is deferred until theme implementation is registered.",
                     new Object[] {implQName, contribution.getQName()});  // see registerImpl method above
             deferredContributions.add(new DeferredContribution(implQName, contribution));
         } else {
