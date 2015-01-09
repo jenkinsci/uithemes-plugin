@@ -8,7 +8,7 @@
 
     <groupId>org.jenkins-ci.plugins.uithemes</groupId>
     <artifactId>uithemes-pom</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>UIThemes: Parent POM</name>
 
@@ -41,7 +41,7 @@
         <connection>scm:git:ssh://github.com/jenkinsci/uithemes-plugin</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/uithemes-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/uithemes-plugin</url>
-        <tag>uithemes-pom-2.1.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
