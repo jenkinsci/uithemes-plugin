@@ -23,6 +23,8 @@
  */
 package org.jenkinsci.plugins.uithemes.util;
 
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import hudson.model.User;
 import jenkins.model.IdStrategy;
 import jenkins.model.Jenkins;
@@ -32,6 +34,7 @@ import org.junit.Assert;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -47,6 +50,8 @@ public class JenkinsUtil {
     public static File JENKINS_USER_HOME;
     public static File JENKINS_ANONYMOUS_USER_HOME;
     protected static Method idStrategy;
+
+    private static volatile Properties currentJenkinsEnvVariables;
 
     static {
         try {
@@ -99,6 +104,36 @@ public class JenkinsUtil {
         }
     }
 
+    public static void createJenkinsEnvVariablesLESSFile() throws IOException {
+        Properties variables = new Properties();
+        Jenkins instance = Jenkins.getInstance();
+        if (instance != null) {
+            variables.setProperty("rootURL", instance.getRootUrl());
+        } else {
+            variables.setProperty("rootURL", "/jenkins");
+        }
+
+        synchronized (JENKINS_USER_HOME) {
+            if (currentJenkinsEnvVariables == null || !variables.equals(currentJenkinsEnvVariables)) {
+                // Create/update the env variables.
+                currentJenkinsEnvVariables = variables;
+                Template template = TemplateUtil.createJenkinsEnvVariablesTemplate();
+                File jenkinsEnvVariablesFile = getJenkinsEnvVariablesFile();
+                StringWriter writer = new StringWriter();
+                try {
+                    template.process(variables, writer);
+                    FileUtils.write(jenkinsEnvVariablesFile, writer.toString(), "UTF-8");
+                } catch (TemplateException e) {
+                    throw new IllegalStateException(String.format("Unexpected error creating Jenkins Environment Variables LESS resource at '%s'.", jenkinsEnvVariablesFile.getAbsolutePath()), e);
+                }
+            }
+        }
+    }
+
+    public static File getJenkinsEnvVariablesFile() {
+        return new File(UIThemesProcessor.getUserThemesDir(JENKINS_USER_HOME), "jenkins-env-variables.less");
+    }
+
     /**
      * @author <a href="mailto:tom.fennelly@gmail.com">tom.fennelly@gmail.com</a>
      */
@@ -111,9 +146,7 @@ public class JenkinsUtil {
 
             setAnonymousUserHome("anonymous");  // the "anonymous" user id does not seem to be statically defined anywhere?
 
-            Properties variables = new Properties();
-            variables.setProperty("rootURL", "/jenkins");
-            UIThemesProcessor.createJenkinsEnvVariablesLESSFile(variables);
+            createJenkinsEnvVariablesLESSFile();
 
             Assert.assertNotNull("Test env running against a version of Jenkins older than version 1.566?", idStrategy);
             idStrategy = JenkinsUtilTestSetup.class.getMethod("mockIdStrategyMethod");

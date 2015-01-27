@@ -178,19 +178,6 @@ public final class UIThemesProcessor implements RootAction {
         return themeSet;
     }
 
-    public static void createJenkinsEnvVariablesLESSFile(Properties variables) throws IOException {
-        Template template = TemplateUtil.createJenkinsEnvVariablesTemplate();
-        File jenkinsEnvVariablesFile = getJenkinsEnvVariablesFile();
-        StringWriter writer = new StringWriter();
-
-        try {
-            template.process(variables, writer);
-            FileUtils.write(jenkinsEnvVariablesFile, writer.toString(), "UTF-8");
-        } catch (TemplateException e) {
-            throw new IllegalStateException(String.format("Unexpected error creating Jenkins Environment Variables LESS resource at '%s'.", jenkinsEnvVariablesFile.getAbsolutePath()), e);
-        }
-    }
-
     private synchronized File generateUIThemeSet(File userHome) throws IOException {
         userHome = normalizeUserHome(userHome);
 
@@ -207,6 +194,9 @@ public final class UIThemesProcessor implements RootAction {
 
         UserUIThemeConfiguration themeConfiguration = UserUIThemeConfiguration.fromUserHome(userHome);
         StringBuilder themeStylesBuilder = new StringBuilder();
+
+        // Create/update the global jenkins variables LESS file
+        JenkinsUtil.createJenkinsEnvVariablesLESSFile();
 
         // Generate the user theme styles based on the available themes and the users
         // theme selections, using the theme default implementation where the user has not made an
@@ -272,10 +262,6 @@ public final class UIThemesProcessor implements RootAction {
 
     public static File getUserThemesDir(File userHome) {
         return new File(userHome, "themes");
-    }
-
-    public static File getJenkinsEnvVariablesFile() {
-        return new File(getUserThemesDir(JenkinsUtil.JENKINS_USER_HOME), "jenkins-env-variables.less");
     }
 
     public static File getUserThemeImplDir(String themeName, String themeImplName, File userHome) {

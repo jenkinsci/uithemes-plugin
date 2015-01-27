@@ -25,6 +25,7 @@ package org.jenkinsci.plugins.uithemes.less;
 
 import org.jenkinsci.plugins.uithemes.UIThemesProcessor;
 import org.jenkinsci.plugins.uithemes.model.UIThemeContribution;
+import org.jenkinsci.plugins.uithemes.util.JenkinsUtil;
 import org.lesscss.FileResource;
 import org.lesscss.Resource;
 
@@ -147,7 +148,7 @@ public class URLResource implements Resource {
     public Resource createRelative(String relativeResourcePath) throws IOException {
         if (exists()) {
             if (relativeResourcePath.startsWith(JENKINS_ENV_ALIAS)) {
-                return new FileResource(UIThemesProcessor.getJenkinsEnvVariablesFile());
+                return new FileResource(JenkinsUtil.getJenkinsEnvVariablesFile());
             }
 
             if (relativeResourcePath.startsWith(CORE_LESS_PREFIX)) {
