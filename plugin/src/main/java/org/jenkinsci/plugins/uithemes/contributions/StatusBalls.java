@@ -48,17 +48,17 @@ public class StatusBalls {
                                 .setTitle("Success Color")
                                 .setDescription("Success Color Indicator")
                                 .setType(UIThemeImplSpecProperty.Type.COLOR)
-                                .setDefaultValue("008000")) // Green
+                                .setDefaultValue("28ca41")) // Lime Green
                         .addProperty("warningColor", new UIThemeImplSpecProperty()
                                 .setTitle("Warning Color")
                                 .setDescription("Warning Color Indicator")
                                 .setType(UIThemeImplSpecProperty.Type.COLOR)
-                                .setDefaultValue("ff8c00")) // Dark Orange
+                                .setDefaultValue("fdc230")) // Golden / Orange
                         .addProperty("errorColor", new UIThemeImplSpecProperty()
                                 .setTitle("Error Color")
                                 .setDescription("Error Color Indicator")
                                 .setType(UIThemeImplSpecProperty.Type.COLOR)
-                                .setDefaultValue("ff0000")) // Red
+                                .setDefaultValue("fd6159")) // Tomato Red
                         .addProperty("notBuiltColor", new UIThemeImplSpecProperty()
                                 .setTitle("Not Built Color")
                                 .setDescription("Not Built Color Indicator")
