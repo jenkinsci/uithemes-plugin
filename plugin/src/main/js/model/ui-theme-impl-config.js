@@ -5,7 +5,7 @@
  */
 
 var restApi = require('./rest-api');
-var jqProxy = require('../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 exports.getModelData = function (callback) {
     var mvcContext = this;
@@ -59,7 +59,7 @@ function mashupDataModel(themeName, themesConfig, callback) {
             function getThemeImplConfig() {
                 restApi.getThemeImplConfig("../", function (themeImplConfig) {
                     if (themeImplConfig.status === 'OK') {
-                        var $ = jqProxy.getJQuery();
+                        var $ = jqUtil.getJQuery();
 
                         // clone the impl spec and use it as the user's impl config, mapping in
                         // the user configured values.

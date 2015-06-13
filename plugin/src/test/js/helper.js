@@ -7,7 +7,6 @@
 var gutil = require('gulp-util');
 var fs = require('fs');
 var requireUncached = require("require-uncached");
-var jquery_js = fs.readFileSync("./node_modules/jquery/dist/jquery.min.js", "utf-8");
 
 /**
  * require one of the source modules.
@@ -182,15 +181,10 @@ exports.testWithJQuery = function (content, testFunc) {
 
     jsdom.env({
         html: content,
-        src: [jquery_js],
         done: function (err, window) {
-            var jQuery = exports.require('jQuery');
-
-            jQuery.setWindow(window);
-            jQuery.setJQuery(window.$);
-
+            require('window-handle').setWindow(window);
             try {
-                testFunc(window.$);
+                testFunc(window);
             } catch (e) {
                 exports.error(e);
             }

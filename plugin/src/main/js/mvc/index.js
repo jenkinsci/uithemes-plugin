@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-var jqProxy = require('../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 /**
  * Lightweight MVC.
@@ -39,10 +39,9 @@ exports.isRegistered = function (controllerName) {
  * Apply controllers.
  */
 exports.applyControllers = function (onElement, allowReapply) {
-    var $ = jqProxy.getJQuery();
-    var targetEls = jqProxy.getWidgets(onElement);
+    var targetEls = getWidgets(onElement);
 
-    jqProxy.forEachElement(targetEls, function(targetEl) {
+    jqUtil.forEachElement(targetEls, function(targetEl) {
         if (allowReapply || !targetEl.hasClass('uit-controller-applied')) {
             var controllerName = targetEl.attr('uit-controller');
 
@@ -80,6 +79,20 @@ exports.applyControllers = function (onElement, allowReapply) {
 exports.newContext = function (controllerName, targetEl) {
     return new MVCContext(controllerName, targetEl);
 }
+
+
+/**
+ * Get all widgets in the specified element, or full document if inElement is not specified.
+ * @param inElement The element to search for.  If undefined, the whole document is searched.
+ */
+function getWidgets(inElement) {
+    if (inElement) {
+        return jqUtil.getJQuery()("[uit-controller]", inElement);
+    } else {
+        return jqUtil.getJQuery()("[uit-controller]");
+    }
+}
+
 
 function MVCContext(controllerName, targetEl) {
     if (!controllerName) {

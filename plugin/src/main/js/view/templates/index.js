@@ -7,7 +7,7 @@
 var mvc = require('../../mvc');
 var handlebars = require('handlebars');
 var hbsfyRuntime = require('hbsfy/runtime');
-var jqProxy = require('../../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 /**
  * Templating support.
@@ -96,9 +96,9 @@ exports.apply = function (templateName, dataModel, divWrap) {
     var jQueryDom;
 
     if (divWrap === undefined || divWrap) {
-        jQueryDom = jqProxy.getJQuery()('<div>' + html + '</div>');
+        jQueryDom = jqUtil.getJQuery()('<div>' + html + '</div>');
     } else {
-        jQueryDom = jqProxy.getJQuery()(html);
+        jQueryDom = jqUtil.getJQuery()(html);
     }
 
     // Apply all controllers before returning...

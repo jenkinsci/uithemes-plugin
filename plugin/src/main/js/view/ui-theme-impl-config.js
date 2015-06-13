@@ -5,11 +5,11 @@
  */
 
 var templates = require('./templates');
-var jqProxy = require('../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 var colorPicker = require('./widgets/color-picker');
 
 exports.render = function (modelData, onElement) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var uiThemeImplConfig = templates.apply('ui-theme-impl-config', modelData);
     var themesConfigMVCContext = this.getContext('ui-themes-config');
 

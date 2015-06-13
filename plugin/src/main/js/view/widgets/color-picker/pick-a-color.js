@@ -4,12 +4,12 @@
 * https://github.com/lauren/pick-a-color/blob/master/LICENSE
 */
 
-var jqProxy = require('../../../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 (function () {
     "use strict";
 
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var tinycolor = require('tinycolor2');
 
     $.fn.pickAColor = function (options) {

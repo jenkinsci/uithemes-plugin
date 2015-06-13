@@ -11,8 +11,8 @@ mvc.register(require('./controller/ui-themes-config'));
 mvc.register(require('./controller/ui-theme-impl-config'));
 
 // Apply controllers to the whole document.
-var jqProxy = require('./jQuery');
-var $ = jqProxy.getJQuery();
+var jqUtil = require('jenkins-js-util/jQuery');
+var $ = jqUtil.getJQuery();
 $(function() {
     mvc.applyControllers();
 });

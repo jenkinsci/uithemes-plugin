@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-var test = require('../../../util/test');
+var test = require('jenkins-js-util/test');
 var isTestEnv = test.isTestEnv();
 
 if (!isTestEnv) {

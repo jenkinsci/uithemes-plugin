@@ -4,7 +4,6 @@
 "use strict";
 
 var helper = require('../../helper');
-var tab = helper.require('view/widgets/tab');
 
 describe("view/widgets/tab", function () {
 
@@ -12,7 +11,10 @@ describe("view/widgets/tab", function () {
 
     it("- test", function (done) {
 
-        helper.testWithJQuery(sample1, function ($) {
+        helper.testWithJQuery(sample1, function () {
+            var $ = require('jenkins-js-util/jQuery').getJQuery();
+            var tab = helper.require('view/widgets/tab');
+
             var tabContainer = $('#tab-container');
 
             function getTab(tabId) {

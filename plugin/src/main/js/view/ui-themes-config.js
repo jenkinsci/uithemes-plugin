@@ -6,10 +6,10 @@
 
 var templates = require('./templates');
 var tab = require('./widgets/tab');
-var jqProxy = require('../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 exports.render = function (modelData, onElement) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var themesConfigMVCContext = this;
 
     function _render(theModel) {

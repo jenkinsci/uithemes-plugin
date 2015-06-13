@@ -4,10 +4,10 @@
  * All rights reserved.
  */
 
-var jqProxy = require('../../../jQuery');
+var jqUtil = require('jenkins-js-util/jQuery');
 
 exports.activate = function(container) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var tabBar = $('.tab-bar', container);
     var tabs = $('.tab', tabBar);
 
@@ -23,20 +23,20 @@ exports.activate = function(container) {
 }
 
 exports.activateTab = function(tabId, container) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var tabBar = $('.tab-bar', container);
     var tabIdSelector = '[tab-id="' + tabId + '"]';
     _activateTab($('.tab' + tabIdSelector, tabBar), container);
 }
 
 exports.getActiveTabId = function(container) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var activeTab = $('.tab-bar .tab.active', container);
     return activeTab.attr('tab-id');
 }
 
 function _activateTab(tab, container) {
-    var $ = jqProxy.getJQuery();
+    var $ = jqUtil.getJQuery();
     var tabId = tab.attr('tab-id');
     var tabBar = $('.tab-bar', container);
     var tabContentFrame = $('.tab-content-frame', container);
