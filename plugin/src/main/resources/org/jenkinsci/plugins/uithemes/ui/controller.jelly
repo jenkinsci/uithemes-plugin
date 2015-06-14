@@ -9,6 +9,6 @@
             Optional fragment caption, passed through to the controller.
         </st:attribute>
     </st:documentation>
-    <div uit-controller="${name}" objectUrl="${rootURL}/${it.user.url}" fragCaption="${fragCaption}" />
+    <div jenkins-mvc="${name}" objectUrl="${rootURL}/${it.user.url}" fragCaption="${fragCaption}" />
     <st:adjunct includes="org.jenkinsci.plugins.uithemes.ui.ui-themes"/>
 </j:jelly>

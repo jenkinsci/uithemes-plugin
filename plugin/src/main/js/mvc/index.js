@@ -42,8 +42,8 @@ exports.applyControllers = function (onElement, allowReapply) {
     var targetEls = getWidgets(onElement);
 
     jqUtil.forEachElement(targetEls, function(targetEl) {
-        if (allowReapply || !targetEl.hasClass('uit-controller-applied')) {
-            var controllerName = targetEl.attr('uit-controller');
+        if (allowReapply || !targetEl.hasClass('jenkins-mvc-applied')) {
+            var controllerName = targetEl.attr('jenkins-mvc');
 
             if (controllerName) {
                 var controller = controllers[controllerName];
@@ -56,7 +56,7 @@ exports.applyControllers = function (onElement, allowReapply) {
                     activeContexts[mvcContext.getInstanceId()] = mvcContext;
                     try {
                         targetEl.addClass('uit-widget');
-                        targetEl.addClass('uit-controller-applied');
+                        targetEl.addClass('jenkins-mvc-applied');
                         targetEl.addClass(controllerName);
 
                         model.getModelData.call(mvcContext, function (modelData) {
@@ -87,9 +87,9 @@ exports.newContext = function (controllerName, targetEl) {
  */
 function getWidgets(inElement) {
     if (inElement) {
-        return jqUtil.getJQuery()("[uit-controller]", inElement);
+        return jqUtil.getJQuery()("[jenkins-mvc]", inElement);
     } else {
-        return jqUtil.getJQuery()("[uit-controller]");
+        return jqUtil.getJQuery()("[jenkins-mvc]");
     }
 }
 
