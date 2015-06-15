@@ -135,18 +135,18 @@ exports.mockControllerConfigElement = function(config) {
 }
 
 exports.mvcContext = function(element) {
-    var mvc = exports.require('./mvc');
+    var mvc = exports.require('jenkins-js-mvc');
     return mvc.newContext('mock-controller', element);
 }
 
 exports.mvcContextWithMockConfig = function(config) {
     var mockConfigEl = exports.mockControllerConfigElement(config);
-    var mvc = exports.require('./mvc');
+    var mvc = exports.require('jenkins-js-mvc');
     return mvc.newContext('mock-controller', mockConfigEl);
 }
 
 exports.mvcRegister = function(controllers) {
-    var mvc = exports.require('./mvc');
+    var mvc = exports.require('jenkins-js-mvc');
 
     function register(controllerName) {
         if (!mvc.isRegistered(controllerName)) {

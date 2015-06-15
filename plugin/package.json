@@ -2,6 +2,7 @@
   "name": "ui-themes",
   "version": "0.0.1",
   "dependencies": {
+    "jenkins-js-mvc": "0.0.1",
     "jenkins-js-util": "0.0.1",
     "tinycolor2": "^1.1.1"
   },

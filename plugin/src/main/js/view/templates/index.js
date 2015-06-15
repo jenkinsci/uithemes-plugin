@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-var mvc = require('../../mvc');
+var mvc = require('jenkins-js-mvc');
 var handlebars = require('handlebars');
 var hbsfyRuntime = require('hbsfy/runtime');
 var jqUtil = require('jenkins-js-util/jQuery');

@@ -4,15 +4,14 @@
  * All rights reserved.
  */
 
-var mvc = require('./mvc');
+var mvc = require('jenkins-js-mvc');
 
 // Register controllers...
 mvc.register(require('./controller/ui-themes-config'));
 mvc.register(require('./controller/ui-theme-impl-config'));
 
 // Apply controllers to the whole document.
-var jqUtil = require('jenkins-js-util/jQuery');
-var $ = jqUtil.getJQuery();
+var $ = require('jenkins-js-util/jQuery').getJQuery();
 $(function() {
     mvc.applyControllers();
 });
