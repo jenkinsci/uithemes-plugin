@@ -1,21 +1,17 @@
-#Jenkins UI Themes
+# Jenkins UI Themes
 
 This repository contains components that, when combined, provide the basis on which Jenkins can offer
 per-login customizable/configurable UI "themes".
 
 We've already integrated it into Jenkins Core on a WIP branch at [tfennelly:JENKINS-24143-uithemes-v2][JENKINS-24143-uithemes-v2].
 
-__[Download from the Jenkins CI Server](https://jenkins.ci.cloudbees.com/job/core/job/jenkins-core/1875/artifact/war/target/jenkins.war)__.
+> __[Here's a short video](https://youtu.be/ZlD0zf1VCAs)__.
 
 __NOTE: This plugin will not work on Jenkins until the changes in [tfennelly:JENKINS-24143-uithemes-v2][JENKINS-24143-uithemes-v2] are pushed upstream and released. Once that happens, we'll set a minimum version dependency on this plugin.__
 
 The following is an example screennshot of the user UI Themes Configuration screen on [tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2).
 
 ![config-screen](./images/config-screen.png)
-
-And here's a short screen recording:
-
-<a href="http://youtu.be/ZlD0zf1VCAs" target="_blank"><img src="http://img.youtube.com/vi/ZlD0zf1VCAs/0.jpg" /></a>
 
 [tfennelly:JENKINS-24143-uithemes-v2](https://github.com/tfennelly/jenkins/tree/JENKINS-24143-uithemes-v2) contains a number of themes, some of which have multiple
 implementations:
