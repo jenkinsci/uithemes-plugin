@@ -12,7 +12,7 @@
     <name>UIThemes: Processor</name>
 
     <properties>
-        <jackson.version>2.10.2</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
     </properties>
 
     <dependencies>
