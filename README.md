@@ -1,5 +1,7 @@
 # Jenkins UI Themes
 
+# The plugin has been suspended and can no longer be installed.
+
 This repository contains components that, when combined, provide the basis on which Jenkins can offer
 per-login customizable/configurable UI "themes".
 
