@@ -23,7 +23,7 @@
  */
 package org.jenkinsci.plugins.uithemes;
 
-import com.gargoylesoftware.htmlunit.Page;
+import org.htmlunit.Page;
 import org.jenkinsci.plugins.uithemes.rest.model.StatusResponse;
 import org.jenkinsci.plugins.uithemes.util.JSONReadWrite;
 import org.jvnet.hudson.test.JenkinsRule;

@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.595</version> <!-- Need 1.566+ for User IdStrategy etc -->
+        <version>4.66</version> <!-- Need 1.566+ for User IdStrategy etc -->
     </parent>
 
     <groupId>org.jenkins-ci.plugins.uithemes</groupId>
